@@ -4,9 +4,9 @@ conn = sqlite3.connect('tarefas.db')
 cursor = conn.cursor()
 
 cursor.execute('''
-CREATE TABLE IF NOT EXISTS tarefas(
+        CREATE TABLE IF NOT EXISTS tarefas(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        titulo TEXT NOT NULL
+        titulo TEXT NOT NULL,
         concluida INTEGER DEFAULT 0
         );
     '''
@@ -62,11 +62,11 @@ def removerTarefa(id):
 if __name__ == "__main__":
     while True:
         print("\n --- MENU ---" \
-        "1 - Adicionar tarefa" \
-        "2 - Listar tarefas" \
-        "3 - Marcar tarefa como concluída" \
-        "4 - Remover tarefa" \
-        "0 - Sair")
+        "\n1 - Adicionar tarefa" \
+        "\n2 - Listar tarefas" \
+        "\n3 - Marcar tarefa como concluída" \
+        "\n4 - Remover tarefa" \
+        "\n0 - Sair")
 
         opcao = input("Escolha uma opção: ")
 
