@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS tarefas(
 conn.commit()
 
 
-def adicionarTarefa(titulo: str):
+def adicionarTarefa(titulo):
     cursor.execute('''
         INSERT INTO tarefas (titulo, concluida) VALUES (?, ?); 
     '''
@@ -38,5 +38,52 @@ def listarTarefas():
     conn.close()
     return tarefaDict
 
-def 
+def marcarComoConcluida(id):
+    cursor.execute(
+        '''
+            UPDATE tarefas
+            set concluida = 1
+            WHERE id = ?;
+        '''
+        , (id, )
+    )
+    conn.commit()
+
+def removerTarefa(id):
+    cursor.execute(
+        '''
+            DELETE FROM tarefas
+            WHERE id = ?;
+        '''
+        , (id, )
+    )
+    conn.commit()
+
+if __name__ == "__main__":
+    while True:
+        print("\n --- MENU ---" \
+        "1 - Adicionar tarefa" \
+        "2 - Listar tarefas" \
+        "3 - Marcar tarefa como concluída" \
+        "4 - Remover tarefa" \
+        "0 - Sair")
+
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == "1":
+            titulo = input("Digite o título da tarefa: ")
+            adicionarTarefa(titulo)
+        elif opcao == "2":
+            listarTarefas()
+        elif opcao == "3":
+            idTarefa = int(input("Digite o ID da tarefa: "))
+            marcarComoConcluida(idTarefa)
+        elif opcao == "4":
+            idTarefa = int(input("Digite o ID da tarefa: "))
+            removerTarefa(idTarefa)
+        elif opcao == "0":
+            break
+        else:
+            print("Opção inválida.")
+
         
