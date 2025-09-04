@@ -39,13 +39,15 @@ def criar_usuario():
 @app.route("/usuarios/<int:id>", methods = ['DELETE']) 
 def deletar_usuario(id):
     delete_user_by_id(id)
+    return f"Usuário deletado!"
 
 # http://localhost:5000/usuarios/1
 @app.route("/usuarios/<int:id>", methods = ['PUT']) 
 def atualizar_usuario(id):
     data = request.get_json()
     email = data.get('email')
-    update_user_email_by_id(id, email)
+    update_user_email_by_id(email, id)
+    return f"E-mail atualizado!"
 
 
 

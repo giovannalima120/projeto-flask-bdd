@@ -97,5 +97,5 @@ def update_user_email_by_id(email, id):
         '''
         , (email, id)
     )
-    conn.execute()
+    conn.commit()
     conn.close()
